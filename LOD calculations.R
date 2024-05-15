@@ -1,7 +1,7 @@
 ########################################################
 #Programmer: Wenqiao He
 #Last update: May 2024
-#Purpose: P. ovale real-time PCR assays LOD calculations
+#Purpose: P. ovale real-time PCR assay LOD calculations
 #        (adapted from Jeff Laux and Jonathan Parr)
 ########################################################
 
@@ -12,13 +12,13 @@ library(dplyr)
 library(ggpubr)
 library(ggrepel)
 # Set working directory
-setwd("C:/Users/wenqiao/Desktop/revision_Po qPCR assay_WH_jbp/Revision submission_2024_05_06")
+setwd("FILE_PATH")
 
 #------------------------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------------------------
 
 #loading data 
-LOD_data <- read_excel("LOD_calculations.xlsx")
+LOD_data <- read_excel("FILE_NAME") ##Input data file name
 
 ##Singleplex P.ovale curtisi assay LOD calculation#############################################################################
 Singleplex_Poc_LOD_data <- subset(LOD_data,LOD_data$Assay=="Singleplex" & LOD_data$Species=="P. ovale curtisi")
@@ -126,7 +126,7 @@ abline(h=.95, col="gray",lwd=2)
 lines(x.seq, preds_dc.df$lower.lim, col="lightblue",lwd=5) 
 lines(x.seq, preds_dc.df$upper.lim, col="lightblue",lwd=5)  
 
-##Duplex P.ovale wallikeri assay LOD calculation###########################################################################
+##Duplex P.ovale wallikeri assay LOD calculation###############################################################################
 Duplex_Pow_LOD_data <- subset(LOD_data,LOD_data$Assay=="Duplex"& LOD_data$Species=="P. ovale wallikeri")
 Duplex_Pow_LOD_data <- Duplex_Pow_LOD_data |> dplyr::mutate(Diagnosis = dplyr::case_when(`Cq Value` < 45 ~ "Positive",
                                                                                                  .default = "Negative"))
