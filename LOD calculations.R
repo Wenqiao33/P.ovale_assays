@@ -159,3 +159,29 @@ lines(x.seq, preds_dw.df$pred.prob, col="#fc8d59",lwd=5)
 abline(h=.95, col="gray",lwd=2)
 lines(x.seq, preds_dw.df$lower.lim, col="navajowhite",lwd=5) 
 lines(x.seq, preds_dw.df$upper.lim, col="navajowhite",lwd=5) 
+
+##Plotting Duplex P.ovale curtisi and P.ovale wallikeri assay LOD#############################################################
+Duplex_Poc_Pow_LOD_data <- subset(LOD_data,LOD_data$Assay=="Duplex")
+Duplex_Poc_Pow_LOD_data <- Duplex_Poc_Pow_LOD_data |> dplyr::mutate(Diagnosis = dplyr::case_when(`Cq Value` < 45 ~ "Positive",
+                                                                                                 .default = "Negative"))
+LOD <-ggplot(Duplex_Poc_Pow_LOD_data, aes(x=Species, y=Concentration, colour=Diagnosis))+
+  geom_point(position=position_jitter(width = 0.23,height = 0),size=3.5, alpha=0.5)+
+  guides(colour=guide_legend(title=" "))+
+  scale_fill_brewer()+
+  labs(title=" ")+
+  ylab("Parasite density (parasites/ul)")+
+  xlab("Species")+
+  theme_bw()+
+  theme(panel.grid.minor = element_blank())+
+  theme(text=element_text(family="serif"),axis.title=element_text(size=17,face="bold"))+
+  theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust=0.5,size = 17, face="italic"),legend.text = element_text(size = 15))+
+  theme(axis.text.y = element_text(size = 17),axis.title.y = element_text(size = 17))+
+  geom_segment(aes(y=4.2,x=0.7,yend=4.2,xend=1.3),linetype = "dashed",size=0.8)+
+  geom_segment(aes(y=41.2,x=1.7,yend=41.2,xend=2.3),linetype = "dashed",size=0.8)+
+  scale_y_log10()+
+  scale_x_discrete(labels=c("P. ovale curtisi","P. ovale wallikeri"))+
+  geom_text(aes(y=2.60,x=1.46, label='P. ovale curtisi \n LOD: 4.2 \n parasites/ul'),size=4.5,family="serif",color="#2c7bb6")+
+  geom_text(aes(y=72.623,x=1.5, label='P. ovale wallikeri \n LOD: 41.2 \n parasites/ul'),size=4.5,family="serif",color="#2c7bb6")+
+  scale_color_manual(breaks=c("Positive","Negative"),values=c("#2c7bb6","#d7191c"))
+
+print(LOD)
