@@ -48,7 +48,7 @@ preds_c.df$Concentration[min(which(preds_c.df$pred.prob>.95))]
 ### Plotting Singleplex P.ovale curtisi assay LOD figure#######################################################################
 windows() 
 plot(Detection~Concentration, data=Singleplex_Poc_LOD_data,cex.axis=1.25,xlim=c(0,10),cex.lab=1.5,
-     xlab = 'Concentration (Parasites/ul)', 
+     xlab = 'Concentration (Parasites/µl)', 
      ylab = 'Probability of detection',
      family = 'serif',font.lab=2)  
 lines(x.seq, preds_c.df$pred.prob, col="blue",lwd=5) 
@@ -84,7 +84,7 @@ preds_w.df$concentration[max(which(preds_w.df$pred.prob<.95))]
 ### Plotting Singleplex P.ovale wallikeri assay LOD figure#####################################################################
 windows()
 plot(Detection~Concentration, data=Singleplex_Pow_LOD_data,cex.axis=1.25,xlim=c(0,40),cex.lab=1.5,
-     xlab = 'Concentration (Parasites/ul)', ylab = 'Probability of detection',family = 'serif',font.lab=2) 
+     xlab = 'Concentration (Parasites/µl)', ylab = 'Probability of detection',family = 'serif',font.lab=2) 
 lines(x.seq, preds_w.df$pred.prob, col="#fc8d59",lwd=5) 
 abline(h=.95, col="gray",lwd=2)
 lines(x.seq, preds_w.df$lower.lim, col="navajowhite",lwd=5) 
@@ -118,7 +118,7 @@ preds_dc.df$Concentration[min(which(preds_dc.df$pred.prob>.95))]
 ### Plotting Duplex P.ovale curtisi assay LOD figure###########################################################################
 windows() 
 plot(Detection~Concentration, data=Duplex_Poc_LOD_data,cex.axis=1.25,xlim=c(0,10),cex.lab=1.5,
-     xlab = 'Concentration (Parasites/ul)', 
+     xlab = 'Concentration (Parasites/µl)', 
      ylab = 'Probability of detection',
      family = 'serif',font.lab=2)  
 lines(x.seq, preds_dc.df$pred.prob, col="blue",lwd=5) 
@@ -154,7 +154,7 @@ preds_dw.df$concentration[max(which(preds_dw.df$pred.prob<.95))]
 ### Plotting Duplex P.ovale wallikeri assay LOD figure#########################################################################
 windows()
 plot(Detection~Concentration, data=Duplex_Pow_LOD_data,cex.axis=1.25,xlim=c(0,100),cex.lab=1.5,
-     xlab = 'Concentration (Parasites/ul)', ylab = 'Probability of detection',family = 'serif',font.lab=2) 
+     xlab = 'Concentration (Parasites/µl)', ylab = 'Probability of detection',family = 'serif',font.lab=2) 
 lines(x.seq, preds_dw.df$pred.prob, col="#fc8d59",lwd=5) 
 abline(h=.95, col="gray",lwd=2)
 lines(x.seq, preds_dw.df$lower.lim, col="navajowhite",lwd=5) 
@@ -169,7 +169,7 @@ LOD <-ggplot(Duplex_Poc_Pow_LOD_data, aes(x=Species, y=Concentration, colour=Dia
   guides(colour=guide_legend(title=" "))+
   scale_fill_brewer()+
   labs(title=" ")+
-  ylab("Parasite density (parasites/ul)")+
+  ylab("Parasite density (parasites/µl)")+
   xlab("Species")+
   theme_bw()+
   theme(panel.grid.minor = element_blank())+
@@ -180,8 +180,8 @@ LOD <-ggplot(Duplex_Poc_Pow_LOD_data, aes(x=Species, y=Concentration, colour=Dia
   geom_segment(aes(y=41.2,x=1.7,yend=41.2,xend=2.3),linetype = "dashed",size=0.8)+
   scale_y_log10()+
   scale_x_discrete(labels=c("P. ovale curtisi","P. ovale wallikeri"))+
-  geom_text(aes(y=2.60,x=1.46, label='P. ovale curtisi \n LOD: 4.2 \n parasites/ul'),size=4.5,family="serif",color="#2c7bb6")+
-  geom_text(aes(y=72.623,x=1.5, label='P. ovale wallikeri \n LOD: 41.2 \n parasites/ul'),size=4.5,family="serif",color="#2c7bb6")+
+  geom_text(aes(y=2.60,x=1.46, label='P. ovale curtisi \n LOD: 4.2 \n parasites/µl'),size=4.5,family="serif",color="#2c7bb6")+
+  geom_text(aes(y=72.623,x=1.5, label='P. ovale wallikeri \n LOD: 41.2 \n parasites/µl'),size=4.5,family="serif",color="#2c7bb6")+
   scale_color_manual(breaks=c("Positive","Negative"),values=c("#2c7bb6","#d7191c"))
 
 print(LOD)
