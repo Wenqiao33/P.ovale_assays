@@ -9,7 +9,7 @@ library(readxl)
 library(ggplot2)
 
 # Set working directory
-setwd("C:/Users/wenqiao/Desktop/revision_Po qPCR assay_WH_jbp/Revision submission_2024_05_06")
+setwd("FILE_PATH")
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ setwd("C:/Users/wenqiao/Desktop/revision_Po qPCR assay_WH_jbp/Revision submissio
 # Field sample analysis and plotting##################################################################################################### 
 
 ##Loading data
-DRC_Po <- read_excel("DRC_Po_field_samples_upload.xlsx")
+DRC_Po <- read_excel("FILE_NAME")
 
 ##Calculating average Cq values
 DRC_Po$Cq_mean_18S <- rowMeans(DRC_Po[, c("Cq1_18S", "Cq2_18S")], na.rm = TRUE)
