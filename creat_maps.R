@@ -53,8 +53,8 @@ print(Africa_map)
 # Get the country data
 congo <- ne_countries(scale = "medium", country = "Democratic Republic of the Congo", returnclass = "sf")
 
-# Get city boundaries from https://gadm.org/ (we use gadm41_COD_1.shp for the Congo map)
-city_boundaries <- st_read("C:/Users/wenqiao/Desktop/revision_Po qPCR assay_WH_jbp/Revision submission_2024_05_06/revision submission 5-23-2024/gadm41_COD_1.shp")
+# Get administrative boundaries from https://gadm.org/ (we use gadm41_COD_1.shp for the Congo map)
+city_boundaries <- st_read("gadm41_COD_1.shp")
 
 # Filter the data for Kinshasa, Sud-Kivu, and Bas-Uele
 Kinshasa <- subset(city_boundaries, city_boundaries$NAME_1 == "Kinshasa")
